@@ -310,7 +310,7 @@ public class ViewPanel extends javax.swing.JPanel {
             jLabel12.setIcon(employee.getPhoto());
         }
     }//GEN-LAST:event_jViewBtnActionPerformed
-
+//Add delete buton
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jDeleteBtn;
