@@ -34,7 +34,13 @@ public class HRManagementSystem {
         return employee;
     
     }
+    public void deleteRecords(Employee employee){
+        employeeRecord.remove(employee);
+        
+    }
     
-    //todo: delete record
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
     
 }

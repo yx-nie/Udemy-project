@@ -158,9 +158,19 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jDeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jDeleteBtn.setText("Delete");
+        jDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDeleteBtnActionPerformed(evt);
+            }
+        });
 
         jUpdateBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jUpdateBtn.setText("Update");
+        jUpdateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUpdateBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -310,7 +320,63 @@ public class ViewPanel extends javax.swing.JPanel {
             jLabel12.setIcon(employee.getPhoto());
         }
     }//GEN-LAST:event_jViewBtnActionPerformed
-//Add delete buton
+
+    private void jDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteBtnActionPerformed
+        // TODO add your handling code here:
+        int returnValue=jTable1.getSelectedRow();
+        
+        if(returnValue<0){
+            JOptionPane.showMessageDialog(this, "Please choose an employee!");
+            return;
+        }else{
+            DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
+            Employee employee=(Employee)model.getValueAt(returnValue, 0);
+            
+            records.deleteRecords(employee);
+            JOptionPane.showMessageDialog(this, "Record delete successfully!");
+            populateRecords();
+            
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+            jLabel12.setIcon(null);
+        }
+    }//GEN-LAST:event_jDeleteBtnActionPerformed
+
+    private void jUpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateBtnActionPerformed
+        // TODO add your handling code here:
+        int returnValue=jTable1.getSelectedRow();
+        
+        if(returnValue<0){
+            JOptionPane.showMessageDialog(this, "Please select an employee");
+            return;
+        }else{
+            DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
+            Employee employee=(Employee)model.getValueAt(returnValue, 0);
+            
+            employee.setName(jTextField1.getText());
+            employee.setID(Integer.parseInt(jTextField2.getText()));
+            employee.setAge(Integer.parseInt(jTextField3.getText()));
+            employee.setGender(jTextField4.getText());
+            employee.setStartDate(Integer.parseInt(jTextField5.getText()));
+            employee.setLevel(jTextField6.getText());
+            employee.setTeamInfo(jTextField7.getText());
+            employee.setPositionTitle(jTextField8.getText());
+            employee.setCellPhoneNumber(jTextField9.getText());
+            employee.setEmailAddress(jTextField10.getText());
+            employee.setPhoto(jLabel12.getIcon());
+            
+            JOptionPane.showMessageDialog(this, "Records updated!");
+            populateRecords();
+    }//GEN-LAST:event_jUpdateBtnActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jDeleteBtn;
@@ -348,7 +414,7 @@ public class ViewPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Employee employee: records.getEmployeeRecord()){
-            Object[] column = new Object[10];
+            Object[] column = new Object[11];
             column[0]=employee;
             column[1]=employee.getID();
             column[2]=employee.getAge();
@@ -359,6 +425,7 @@ public class ViewPanel extends javax.swing.JPanel {
             column[7]=employee.getPositionTitle();
             column[8]=employee.getCellPhoneNumber();
             column[9]=employee.getEmailAddress();
+            column[10]=employee.getPhoto();
             
             model.addRow(column);
                     

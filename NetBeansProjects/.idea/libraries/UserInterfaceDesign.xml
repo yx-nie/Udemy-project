@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="UserInterfaceDesign">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/UserInterfaceDesign/dist/UserInterfaceDesign.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

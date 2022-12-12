@@ -111,9 +111,9 @@ public class Employee {
         return photo;
     }
     // todo: throw exceptions if not a right type input.
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
-    
+    @Override
+    public String toString(){
+        return name;
     }
+    
 }
