@@ -1,15 +1,21 @@
-<header>
-    <nav calss="navbar navbar-expand-md navbar-dark background-dark">
+<header class="header">
+    <nav calss="navbar navbar-expand-lg navbar-darkbg-dark">
         <div><a href="https://wwww.wang.com" class="navbar-brand">My Todo List</a></div>
-
-        <ul class="navbar-nav">
-            <li><a href="/welcome/wang" class="nav-link">Home</a></li>
-            <li><a href="/list-todos" class="'nav-link">Todos</a></li>
-        </ul>
-        <ul class="navbar-nav navbar-collapse justify-content-end" >
-            <li><a href="/login" class="nav-link">Login</a></li>
-            <li><a href="/login" class="nav-link">Logout</a></li>
-        </ul>
+        <div class="container">
+            <ul class="navbar-nav">
+                <!-- routerLink will rout to a page without refresh the whole website -->
+                <li><a *ngIf="authenticate.isUserLoggedIn()" routerLink="/welcome/wang" class="nav-link">Home</a></li>
+                <li><a *ngIf="authenticate.isUserLoggedIn()" routerLink="/list-todos" class="'nav-link">Todos</a></li>
+            </ul>
+            <!-- <ul class="navbar-nav navbar-collapse justify-content-end"> -->
+            <ul class="navbar-nav navbar-collapse justify-content-end">
+                <li><a *ngIf="!authenticate.isUserLoggedIn()"routerLink="/login" class="nav-link">Login</a></li>
+                <li><a *ngIf="authenticate.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+        
     </nav>
 </header>
+
+
 

@@ -3,14 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RouteGuardService } from './service/route-guard.service';
+import { TodoComponent } from './todo/todo.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 //all the routing path should be concluded here for the use of router-outlet
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  {path:'',component:LoginComponent},//activate only when user is logged in: routeGuardedService
   {path:'login',component:LoginComponent},
-  {path:'welcome/:name',component:WelcomeComponent},
-  {path:'list-todos',component:ListTodosComponent},
+  {path:'logout',component:LogoutComponent,canActivate:[RouteGuardService]},
+  {path:'welcome/:name',component:WelcomeComponent,canActivate:[RouteGuardService]},
+  {path:'list-todos',component:ListTodosComponent,canActivate:[RouteGuardService]},
+  {path:'todo/:id',component:TodoComponent,canActivate:[RouteGuardService]},
   {path:'**',component:ErrorComponent},
 ];
 

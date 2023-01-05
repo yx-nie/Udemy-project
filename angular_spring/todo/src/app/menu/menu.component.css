@@ -1,0 +1,16 @@
+.header{
+    height: 200px;
+    width:100%;
+    background:black;
+}
+
+ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    /* display: inline; */
+}
+
+li a{
+    display: inline;
+}
