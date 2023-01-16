@@ -1,8 +1,8 @@
-package com.todo.restful.webservice.restfulwebservice.controller;
+package com.todo.restful.webservice.restfulwebservice.auth;
 
-public class HelloWorldBean {
+public class AuthenticateBean {
     private String message;
-    public HelloWorldBean(String message) {
+    public AuthenticateBean(String message) {
         this.message=message;
     }
 

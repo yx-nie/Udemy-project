@@ -12,6 +12,7 @@ export class WelcomeComponent implements OnInit{
   
   message:String = 'some message'
   name=''
+  password=''
   welcomeMessageFromService:String=''
   constructor(private route:ActivatedRoute,
     private service:WelcomeDataService
@@ -24,13 +25,14 @@ export class WelcomeComponent implements OnInit{
     //get the parameters passing by the router
     console.log(this.route.snapshot.params['name']);
     this.name=  this.route.snapshot.params['name'];
+    this.password= this.route.snapshot.params['password'];
     //this.router.navigate(['list-todos'])
 
   }
 
   getWelcomeMessage(){
-    console.log(this.service.executeHelloWorldBeanService());
-    this.service.executeHelloWorldBeanService().subscribe(
+    console.log(this.service.executeHelloWorldServiceWithVariable(this.name, this.password));
+    this.service.executeHelloWorldServiceWithVariable(this.name, this.password).subscribe(
       response=>this.handleSuccessfulResponse(response), 
       error=>this.handleErrorResponse(error)
     );
@@ -55,8 +57,8 @@ export class WelcomeComponent implements OnInit{
     }
 
     getWelcomeMessagewithParameter(){
-      console.log(this.service.executeHelloWorldServiceWithVariable(this.name));
-      this.service.executeHelloWorldServiceWithVariable(this.name).subscribe(
+      console.log(this.service.executeHelloWorldServiceWithVariable(this.name,this.password));
+      this.service.executeHelloWorldServiceWithVariable(this.name, this.password).subscribe(
         response=>this.handleSuccessfulResponse(response), 
         error=>this.handleErrorResponse(error)
       );

@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class TodoHardcodedService {
     private static List<Todo> todos=new ArrayList();
-    private static int idcounter=0;
+    private static Long idcounter= 0L;
 
     static {
         todos.add(new Todo(++idcounter, "wang", "learn AWS", false, new Date()));
@@ -22,7 +22,7 @@ public class TodoHardcodedService {
         return todos;
     }
 
-    public Todo deleteById(int id){
+    public Todo deleteById(long id){
         Todo todo=findById(id);
         if(todo==null){
             return null;
@@ -33,7 +33,7 @@ public class TodoHardcodedService {
         return null;
     }
 
-    public Todo findById(int id){
+    public Todo findById(long id){
         for(Todo todo:todos){
             if(todo.getId()==id){
                 return todo;
@@ -42,7 +42,7 @@ public class TodoHardcodedService {
         return null;
     }
 
-    public Todo updateTodo(int id){
+    public Todo updateTodo(long id){
         Todo todo = findById(id);
         if(todo==null){
             return null;
@@ -57,7 +57,7 @@ public class TodoHardcodedService {
             todo.setId(++idcounter);
             todos.add(todo);
         }else{
-            deleteById(todo.getId());
+            deleteById(todo.getId() );
             todos.add(todo);
         }
         return todo;
